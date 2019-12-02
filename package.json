@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "day1part1": "tsc day1/day1part1.ts && node day1/day1part1.js",
-    "day1part2": "tsc day1/day1part2.ts && node --max-old-space-size=8192 day1/day1part2.js",
-    "day2part1": "tsc day2/day2part1.ts && node --max-old-space-size=8192 day2/day2part1.js",
-    "day2part2": "tsc day2/day2part2.ts && node --max-old-space-size=8192 day2/day2part2.js"
+    "day1part1": "tsc day1/part1.ts && node --max-old-space-size=8192 day1/part1.js",
+    "day1part2": "tsc day1/part2.ts && node --max-old-space-size=8192 day1/part2.js",
+    "day2part1": "tsc day2/part1.ts && node --max-old-space-size=8192 day2/part1.js",
+    "day2part2": "tsc day2/part2.ts && node --max-old-space-size=8192 day2/part2.js",
+    "day3part1": "tsc day3/part1.ts && node --max-old-space-size=8192 day3/part1.js",
+    "day3part2": "tsc day3/part2.ts && node --max-old-space-size=8192 day3/part2.js"
   },
   "repository": {
     "type": "git",
