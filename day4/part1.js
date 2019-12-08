@@ -1,23 +1,33 @@
 const R = require("ramda");
 
+function twoAdjacentDigitsAreTheSame(password) {
+    return password.toString()
+        .split('')
+        .map(Number)
+        .reduce(
+            (accumulator, currentValue, currentIndex, array) =>
+                (currentValue === array[currentIndex + 1])
+                    ? true
+                    : accumulator,
+            false
+        );
+}
+
+function isAscending(password) {
+    return password.toString()
+        .split('')
+        .map(Number)
+        .reduce(
+            (accumulator, currentValue, currentIndex, array) =>
+                (currentIndex === 5 || currentValue <= array[currentIndex + 1])
+                    ? accumulator
+                    : false,
+            true
+        );
+}
+
 const validPasswords = R.range(382345, 843168)
-    .filter(password => {
-        const numbers = password.toString().split('').map(Number);
-        let valid = false;
-        numbers.forEach((value, index, array) => {
-            if (value === array[index+1] && value !== array[index-1] && value !== array[index+2]) {
-                valid = true;
-            }
-        });
-        return valid;
-    })
-    .filter(password => {
-        const numbers = password.toString().split('').map(Number);
-        return numbers[0] <= numbers[1]
-            && numbers[1] <= numbers[2]
-            && numbers[2] <= numbers[3]
-            && numbers[3] <= numbers[4]
-            && numbers[4] <= numbers[5]
-    });
+    .filter(twoAdjacentDigitsAreTheSame)
+    .filter(isAscending);
 
 console.log(validPasswords.length);
