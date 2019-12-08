@@ -5,7 +5,6 @@ const input = fs.readFileSync('input.txt', 'utf8')
     .split('')
     .map(Number);
 
-
 const result = R.dropLast(1, input.reduce((accumulator, currentValue, currentIndex, array) => {
     const lastLayer = R.last(accumulator);
     if (lastLayer === undefined || lastLayer.length === 6 && R.all(row => row.length === 25, lastLayer)) {

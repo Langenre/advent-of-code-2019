@@ -1,5 +1,5 @@
-const R = require('ramda');
-const fs = require('fs');
+import * as R from 'ramda';
+import * as fs from 'fs';
 
 const input = fs.readFileSync('day1/input.txt', 'utf8')
     .split('\n')

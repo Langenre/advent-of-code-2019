@@ -9,7 +9,10 @@
     "day2part1": "tsc day2/part1.ts && node --max-old-space-size=8192 day2/part1.js",
     "day2part2": "tsc day2/part2.ts && node --max-old-space-size=8192 day2/part2.js",
     "day3part1": "tsc day3/part1.ts && node --max-old-space-size=8192 day3/part1.js",
-    "day3part2": "tsc day3/part2.ts && node --max-old-space-size=8192 day3/part2.js"
+    "day3part2": "tsc day3/part2.ts && node --max-old-space-size=8192 day3/part2.js",
+    "day5part1": "tsc day5/part1.ts && node --max-old-space-size=8192 day5/part1.js",
+    "day6part1": "tsc day6/part1.js && node --max-old-space-size=8192 day6/part1.js"
+
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
   "dependencies": {
     "@types/node": "^12.12.14",
     "@types/ramda": "^0.26.36",
+    "nodemon": "^2.0.1",
     "ramda": "^0.26.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.2"
