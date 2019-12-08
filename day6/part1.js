@@ -1,21 +1,21 @@
 const fs = require("fs");
-
-const relations = []
+const R = require("ramda");
 
 const input = fs.readFileSync('input.txt', 'utf8')
     .split('\n')
-    .map(str => str.split(')'))
-    .forEach(rel => relations[rel[1]] = rel[0]);
+    .map(R.split(')'))
+    .reduce((acc, val) => {
+        acc[val[1]] = val[0];
+        return acc;
+    }, []);
 
 
-let globalCount = 0;
-for (let [child, parent] of Object.entries(relations)) {
-    let count = 0;
+let count = 0;
+for (let parent of Object.values(input)) {
     while (parent !== undefined) {
         count++;
-        parent = relations[parent];
+        parent = input[parent];
     }
-    globalCount += count;
 }
 
-console.log(globalCount);
+console.log(count);

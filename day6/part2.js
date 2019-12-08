@@ -1,36 +1,37 @@
 const fs = require("fs");
 const R = require("ramda");
 
-const relations = [];
-
 const input = fs.readFileSync('input.txt', 'utf8')
     .split('\n')
-    .map(str => str.split(')'))
-    .forEach(rel => relations[rel[1]] = rel[0]);
+    .map(R.split(')'))
+    .reduce((acc, val) => {
+        acc[val[1]] = val[0];
+        return acc;
+    }, []);
 
 
-let parentsYOU = [];
-let parentYOU = relations['YOU'];
-while (parentYOU !== undefined) {
-    parentsYOU.push(parentYOU);
-    parentYOU = relations[parentYOU];
+let parentList1 = [];
+let parent1 = input['YOU'];
+while (parent1 !== undefined) {
+    parentList1.push(parent1);
+    parent1 = input[parent1];
 }
 
-let parentsSAN = [];
-let parentSAN = relations['SAN'];
-while (parentSAN !== undefined) {
-    parentsSAN.push(parentSAN);
-    parentSAN = relations[parentSAN];
+let parentList2 = [];
+let parent2 = input['SAN'];
+while (parent2 !== undefined) {
+    parentList2.push(parent2);
+    parent2 = input[parent2];
 }
 
-parentsSAN.forEach(parent => {
-    if (R.contains(parent, parentsYOU)) {
-        console.log(parent)
+let firstCommonParent;
+parentList1.forEach(parent => {
+    if (R.contains(parent, parentList2) && firstCommonParent === undefined) {
+        firstCommonParent = parent;
     }
 });
 
-// ZCZ
+const distance1 = R.findIndex(obj => obj === firstCommonParent, parentList1);
+const distance2 = R.findIndex(obj => obj === firstCommonParent, parentList2);
 
-const way1 = R.findIndex(obj => obj === 'ZCZ', parentsYOU);
-const way2 = R.findIndex(obj => obj === 'ZCZ', parentsSAN);
-console.log(way1+way2);
+console.log(distance1 + distance2);
